@@ -1,0 +1,12 @@
+name: build-deb
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash b.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: injectordemo-deb
+          path: out/*.deb
